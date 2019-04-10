@@ -15,7 +15,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('#table_id').DataTable();
         } );
     </script>
 
@@ -24,19 +24,36 @@
 <table id="table_id" class="display">
     <thead>
         <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-        </tr>
-        <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-        </tr>
+<?php
+
+$dsn = 'pgsql:dbname=aulaphp;host=127.0.0.1';
+$user = 'postgres'; //mysql usuario=root
+$password = 'admlinux';//sem senha
+
+try {
+$dbh = new PDO($dsn, $user, $password);
+} catch (PDOException $e) {
+echo 'Connection failed: ' . $e->getMessage();
+}
+        $sql = 'SELECT * FROM exemplo1';
+        foreach ($dbh->query($sql) as $row) {
+        echo "<tr>";
+        echo "<td>". $row['id'] . "</td>";
+        echo "<td>". $row['nome'] . "</td>";
+        echo "<td>". $row['idade'] . "</td>";
+echo "<td> <a href=editar.php?id=".$row['id'].">Editar</a></td>";
+echo "<td> <a href=excluir.php?id=".$row['id'].">Excluir</a></td>";
+        echo "</tr>";
+        }
+?>
     </tbody>
 </table>    
 </body>

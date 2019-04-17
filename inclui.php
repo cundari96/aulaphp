@@ -7,9 +7,9 @@
 <body>
 <form action=salvar.php>
 <p>Nome</p>
-<input type=text name=nome>
+<input type=text name=nome1>
 <p>Idade</p>
-<input type=number name=idade>
+<input type=number name=idade1>
 <br><br>
 <input type=submit value=Salvar>
 </form> 

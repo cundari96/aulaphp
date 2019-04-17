@@ -11,7 +11,7 @@ $dbh = new PDO($dsn, $user, $password);
 echo 'Connection failed: ' . $e->getMessage();
 }
 
-$sql = 'SELECT * FROM exemplo1 where id=$id';
+$sql = "SELECT * FROM exemplo1 where id=$id";
 
 foreach ($dbh->query($sql) as $row) {
     echo "<form action=salvar_editar.php>";

@@ -21,6 +21,10 @@
 
 </head>
 <body>
+<br><br>
+<a href=inclui.php> Adicionar Pessoas</a>
+<br><br>
+
 <table id="table_id" class="display">
     <thead>
         <tr>

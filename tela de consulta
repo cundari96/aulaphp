@@ -1,0 +1,55 @@
+<html lang="pt-br">
+<META CHARSET="utf-8">
+	<head>
+	<title>consulta</title>
+	</head>
+	
+	<body>
+	<script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+            $('#table_id').DataTable();
+        } );
+    </script>
+	
+	<table id="table_id" class="display">
+    <thead>
+        <tr>
+			<th>ID</th>
+            <th>Nome</th>
+            <th>Idade</th>
+			<td>Salario</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ID</td>
+            <td>Nome</td>
+			<td>Idade</td>
+			<td>Salario</td>
+        </tr>
+       </tbody>
+</table> 
+</body>
+</html>
+<?php
+$dsn = 'pgsql:dbname=trabalho tec pra internet 2;host=127.0.0.1';
+$user = 'root';
+$password = '';
+try {
+$dbh = new PDO($dsn, $user, $password);
+} catch (PDOException $e) {
+echo 'Connection failed: ' . $e->getMessage();
+}
+        $sql = 'SELECT * FROM exemplo1';
+        foreach ($dbh->query($sql) as $row) {
+        echo "<tr>";
+        echo "<td>". $row['id'] . "</td>";
+        echo "<td>". $row['nome'] . "</td>";
+        echo "<td>". $row['idade'] . "</td>";
+		echo "<td>". $row['salario'] . "</td>";
+echo "<td> <a href=editar.php?id=".$row['id'].">Editar</a></td>";
+echo "<td> <a href=excluir.php?id=".$row['id'].">Excluir</a></td>";
+        echo "</tr>";
+        }
+?>
